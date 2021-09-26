@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="~{layout/template.html}">
+<head>
+    <meta charset="UTF-8">
+    <title>ERROR</title>
+</head>
+<body>
+<main class="main" layout:fragment="content">
+
+    <div class="error-content text-center" th:style="'background-image: url(images/error-bg.jpg)'">
+        <div class="container">
+            <h1 class="error-title" th:text="'Error '+ ${status}"> 404</h1><!-- End .error-title -->
+            <p th:text="${error}"></p>
+            <p th:text="${message}"></p>
+            <a href="index.html" class="btn btn-outline-primary-2 btn-minwidth-lg">
+                <span>BACK TO HOMEPAGE</span>
+                <i class="las la-arrow-right"></i>
+            </a>
+        </div><!-- End .container -->
+    </div><!-- End .error-content text-center -->
+</main><!-- End .main -->
+
+</body>
+</html>

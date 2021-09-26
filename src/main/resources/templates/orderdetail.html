@@ -1,0 +1,71 @@
+
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="~{layout/adminlayout/template_admin.html}">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<div class="main-panel" layout:fragment="content">
+    <div class="content">
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="card">
+                        <div class="card-body">
+                            <div class="table-responsive">
+                                <table class="table">
+                                    <thead class=" text-primary">
+                                    <th scope="col">user</th>
+                                    <th scope="col">Product Name</th>
+                                    <th scope="col">Product Price</th>
+                                    <th scope="col">Quantity</th>
+                                    <th scope="col">Product Seller</th>
+                                    <th scope="col">Unit Price</th>
+                                    </thead>
+                                    <tbody>
+                                    <tr th:each="item : ${orderitem}">
+                                        <td scope="row"  th:text="${item.products.name}"></td>
+                                        <th th:text="${item.products.price}"></th>
+                                        <td th:text="${item.quantity}"></td>
+                                        <th th:text="${item.products.user.username}"></th>
+                                        <th th:text="${item.unitPrice}"></th>
+                                    </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="user_order" th:object="${order}">
+                        <div class="row">
+                            <div class="col-lg-6">
+                                <div class="card card-dashboard">
+                                    <div class="card-body">
+                                        <span>Customer: <p th:text="${order.user.username}"></p></span>
+                                        <span>Description: <p th:text="${order.description}"></p></span>
+                                        <span>Phone: <p th:text="${order.phone}"></p></span>
+                                        <span>Address: <p th:text="${order.address}"></p></span>
+                                        <span>createdAt: <p th:text="${order.createdAt}"></p></span>
+                                    </div><!-- End .card-body -->
+                                </div><!-- End .card-dashboard -->
+                            </div><!-- End .col-lg-6 -->
+
+                            <div class="col-lg-6">
+                                <div class="card card-dashboard">
+                                    <div class="card-body">
+                                        <span>Total: <p th:text="${order.subtotal}"></p></span>
+                                    </div><!-- End .card-body -->
+                                </div><!-- End .card-dashboard -->
+                            </div><!-- End .col-lg-6 -->
+                        </div><!-- End .row -->
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+</body>
+</html>

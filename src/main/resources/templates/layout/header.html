@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+<body>
+        <div class="wrap-container" layout:fragment="header">
+            <header class="header header-intro-clearance header-3">
+                <div class="header-top">
+                    <div class="container" >
+                        <div class="header-left">
+                            <a href="tel:#"><i class="las la-phone"></i>Call: +0123 456 789</a>
+                        </div><!-- End .header-left -->
+                        <div class="header-right" style="padding: 10px 0">
+                            <ul class="top-menu">
+                                <li>
+                                    <a href="#">Links</a>
+                                    <ul>
+                                        <li sec:authorize="!isAuthenticated()" class="m-2"><a href="/login" class="m-1">Sign in / Sign up</a></li>
+                                        <li class="m-2" sec:authorize="isAuthenticated()" ><a href="/logout" class="m-1" >Logout</a></li>
+                                    </ul>
+                                </li>
+                            </ul><!-- End .top-menu -->
+                        </div>
+                    </div><!-- End .container -->
+                </div><!-- End .header-top -->
+
+                <div class="header-middle">
+                    <div class="container">
+                        <div class="header-left">
+                            <button class="mobile-menu-toggler">
+                                <span class="sr-only">Toggle mobile menu</span>
+                                <i class="icon-bars"></i>
+                            </button>
+                            <a href="/index" class="logo">
+                                <img src="images/Logo.png" alt="LPD Logo" width="150" height="50">
+                            </a>
+                        </div><!-- End .header-left -->
+
+                        <div class="header-center">
+                            <div class="header-search header-search-extended header-search-visible d-none d-lg-block">
+                                <a href="#" class="search-toggle" role="button"><i class="icon-search"></i></a>
+                                <form method="post" th:action="@{/searchProduct}"  >
+                                    <div class="header-search-wrapper search-wrapper-wide">
+                                        <label for="name" class="sr-only">Search</label>
+                                        <button class="btn btn-primary" type="submit"><i class="las la-search"></i></button>
+                                        <input type="text" class="form-control" name="name" value="" id="name" placeholder="Search product ...">
+                                    </div><!-- End .header-search-wrapper -->
+                                </form>
+                            </div><!-- End .header-search -->
+                        </div>
+
+                        <div class="header-right" sec:authorize="isAuthenticated()">
+                            <div class="header-dropdown-link">
+                                <div class="account">
+                                    <a href="/profile" title="My account">
+                                        <div class="icon">
+                                            <i class="las la-user"></i>
+                                        </div>
+                                        <p sec:authentication="name">Account</p>
+                                    </a>
+                                </div><!-- End .compare-dropdown -->
+
+                                <div class="account">
+                                    <a href="/adminIndex" title="Manager">
+                                        <div class="icon">
+                                            <i class="las la-chart-pie"></i>
+                                        </div>
+                                        <p>Management</p>
+                                    </a>
+                                </div><!-- End .compare-dropdown -->
+
+                                <div class="dropdown cart-dropdown">
+                                    <a href="/cart" class="dropdown-toggle" >
+                                        <div class="icon">
+                                            <i class="las la-shopping-cart"></i>
+<!--                                            <span class="cart-count">2</span>-->
+                                        </div>
+                                        <p>Cart</p>
+                                    </a>
+
+<!--                                    <div class="dropdown-menu dropdown-menu-right">-->
+<!--                                        <div class="dropdown-cart-products">-->
+<!--                                            <div class="product">-->
+<!--                                                <div class="product-cart-details">-->
+<!--                                                    <h4 class="product-title">-->
+<!--                                                        <a href="/products">Beige knitted elastic runner shoes</a>-->
+<!--                                                    </h4>-->
+
+<!--                                                    <span class="cart-product-info">-->
+<!--                                                        <span class="cart-product-qty">1</span>-->
+<!--                                                        x $84.00-->
+<!--                                                    </span>-->
+<!--                                                </div>&lt;!&ndash; End .product-cart-details &ndash;&gt;-->
+
+<!--                                                <figure class="product-image-container">-->
+<!--                                                    <a href="/products" class="product-image">-->
+<!--                                                        <img src="images/index/products/product-5.jpg" alt="product">-->
+<!--                                                    </a>-->
+<!--                                                </figure>-->
+<!--                                                <a href="#" class="btn-remove" title="Remove Product"><i class="icon-close"></i></a>-->
+<!--                                            </div>&lt;!&ndash; End .product &ndash;&gt;-->
+
+<!--                                            <div class="product">-->
+<!--                                                <div class="product-cart-details">-->
+<!--                                                    <h4 class="product-title">-->
+<!--                                                        <a href="product.html">Blue utility pinafore denim dress</a>-->
+<!--                                                    </h4>-->
+
+<!--                                                    <span class="cart-product-info">-->
+<!--                                                        <span class="cart-product-qty">1</span>-->
+<!--                                                        x $76.00-->
+<!--                                                    </span>-->
+<!--                                                </div>&lt;!&ndash; End .product-cart-details &ndash;&gt;-->
+
+<!--                                                <figure class="product-image-container">-->
+<!--                                                    <a href="product.html" class="product-image">-->
+<!--                                                        <img src="images/index/products/product-5.jpg" alt="product">-->
+<!--                                                    </a>-->
+<!--                                                </figure>-->
+<!--                                                <a href="#" class="btn-remove" title="Remove Product"><i class="icon-close"></i></a>-->
+<!--                                            </div>&lt;!&ndash; End .product &ndash;&gt;-->
+<!--                                        </div>&lt;!&ndash; End .cart-product &ndash;&gt;-->
+
+<!--                                        <div class="dropdown-cart-total">-->
+<!--                                            <span>Total</span>-->
+
+<!--                                            <span class="cart-total-price">$160.00</span>-->
+<!--                                        </div>&lt;!&ndash; End .dropdown-cart-total &ndash;&gt;-->
+
+<!--                                        <div class="dropdown-cart-action">-->
+<!--                                            <a href="/cart" class="btn btn-primary">View Cart</a>-->
+<!--                                            <a href="checkout.html" class="btn btn-outline-primary-2"><span>Checkout</span><i class="icon-long-arrow-right"></i></a>-->
+<!--                                        </div>&lt;!&ndash; End .dropdown-cart-total &ndash;&gt;-->
+<!--                                    </div>&lt;!&ndash; End .dropdown-menu &ndash;&gt;-->
+                                </div><!-- End .cart-dropdown -->
+                            </div>
+                        </div><!-- End .header-right -->
+                    </div><!-- End .container -->
+                </div><!-- End .header-middle -->
+
+                <div class="header-bottom sticky-header">
+                    <div class="container">
+                        <div class="header-center">
+                            <nav class="main-nav">
+                                <ul class="menu">
+                                    <li class="megamenu-container active">
+                                        <a href="/index" > <i class="las la-home"></i> Home</a>
+                                    </li>
+                                    <li>
+                                        <a href="/products">Product</a>
+                                    </li>
+                                    <li>
+                                        <a href="/news" >News</a>
+                                    </li>
+                                    <li>
+                                        <a href="/about" >About Us</a>
+                                    </li>
+                                    <li>
+                                        <a href="/help">Support</a>
+                                    </li>
+                                </ul><!-- End .menu -->
+                            </nav><!-- End .main-nav -->
+                        </div><!-- End .header-center -->
+
+                        <div class="header-right">
+                            <i class="la la-lightbulb-o"></i><p>Clearance Up to 30% Off</p>
+                        </div>
+                    </div><!-- End .container -->
+                </div><!-- End .header-bottom -->
+            </header><!-- End .header -->
+        </div>
+</body>
